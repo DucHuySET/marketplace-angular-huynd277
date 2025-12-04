@@ -3,7 +3,7 @@ import {Api} from './api.model'
 export const DEVICE_REACHABILITY_STATUS_API: Api={
     id: "device-reachability-status",
     name: "Device Reachability Status",
-    status: "In Development",
+    status: "Ready",
     description: "Provide SMS and data connectivity status of an user",
     icon: "assets/images/icon/api/device-reach.png",
     version: "v0.3.0",

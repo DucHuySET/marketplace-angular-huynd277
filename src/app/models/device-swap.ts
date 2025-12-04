@@ -3,9 +3,9 @@ import {Api} from './api.model'
 export const DEVICE_SWAP: Api={
     id: "device-swap",
     name: "Device Swap",
-    status: "In Development",
+    status: "Ready",
     description: "Detect SIM transferring to enhance user authentication processes",
-    icon: "assets/images/icon/api/other.png",
+    icon: "assets/images/icon/api/device-swap.png",
     version: "v0.3.0",
     tryItFreeLink: '#',
     learnMoreLink: '#',

@@ -7,15 +7,15 @@ import * as ApiModels from '../models';
 })
 export class ApiService {
   private apis = [
+    ApiModels.NUMBER_VERIFICATION_API,
     ApiModels.DEVICE_LOCATION_API,
     ApiModels.QUALITY_ON_DEMAND_API,
     ApiModels.DEVICE_REACHABILITY_STATUS_API,
-    ApiModels.NUMBER_VERIFICATION_API,
+    ApiModels.DEVICE_SWAP,
     ApiModels.SIM_SWAP_API,
     ApiModels.DEVICE_ROAMING_STATUS,
     ApiModels.DEVICE_IDENTIFIER,
     ApiModels.TRAFFIC_INFLUENCE,
-    ApiModels.DEVICE_SWAP,
     ApiModels.SLICE_BOOKING,
     ApiModels.REGION_DEVICE_COUNT,
     ApiModels.POPULATION_DENSITY_DATA,
@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   getFeaturedApis(): Api[] {
-    return this.apis.slice(0, 6);
+    return this.apis.slice(0, 5);
   }
 
   getApiById(id: string): Api | undefined {
