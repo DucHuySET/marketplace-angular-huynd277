@@ -1,0 +1,9 @@
+version: "3"
+services:
+  angular-app:
+    image: landing-portal-demo-support:25.12.5.1
+    container_name: landing-portal-local
+    # build: .
+    ports:
+      - "8070:8070"
+    restart: always
