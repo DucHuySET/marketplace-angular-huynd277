@@ -29,12 +29,12 @@ export const NUMBER_VERIFICATION_API: Api={
                 {
                     title: "App login",
                     content:`In place of username/password, the application can request seamless authentication of the mobile device.`,
-                    image: 'assets/images/number-verification/app_login.png'
+                    image: 'assets/images/number-verification/app_lo_gin.png' //WAF - cloudrity block file name contain login
                 },
                 {
                     title: "Application password reset",
                     content:`The user journey often relies on One Time Password SMS. As in the app onboarding use case, the application can instead request a seamless authentication of the mobile device via the Number Verification API.`,
-                    image: 'assets/images/number-verification/reset_pass.png'
+                    image: 'assets/images/number-verification/res_et_pass.png'
                 }
             ]
             },

@@ -24,7 +24,7 @@ export const DEVICE_REACHABILITY_STATUS_API: Api={
                 {
                     title: "Emergency Services",
                     content:`An emergency application queries the reachability status of a critical response team member. If the device is reachable via SMS, the system triggers an SMS alert, ensuring that the responder receives the message despite possible data connectivity issues.`,
-                    image: 'assets/images/device-rechability-status/emergency.jpg'
+                    image: 'assets/images/device-rechability-status/em_erg_ency.jpg'
                 },
                 {
                     title: "Customer Support Platforms",
@@ -34,7 +34,7 @@ export const DEVICE_REACHABILITY_STATUS_API: Api={
                 {
                     title: "IoT Devices",
                     content:`A fleet management system queries the reachability status of IoT devices in vehicles. If a device is reachable via data, the system can proceed with real-time monitoring. If it’s reachable only via SMS, the system may reduce the frequency of data updates or switch to less data-intensive communication methods.`,
-                    image: 'assets/images/device-rechability-status/iot.svg'
+                    image: 'assets/images/device-rechability-status/i_o_t.svg'
                 }
             ]
             },
