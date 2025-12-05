@@ -11,93 +11,90 @@ export const DEVICE_REACHABILITY_STATUS_API: Api={
     learnMoreLink: '#',
     overview: {
         definition: {
-            title: "definition",
-            content: `The standardised Device Location Verification API provides the option of  verifying the geographical location of a given SIM-based device and  validating whether it’s within a requested geographical area without  spoofing or GPS theft.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            title: "Definition",
+            content: `The “Device Reachability Status” API allows API consumers to query the connectivity status of a device on a mobile network. The API reveals whether the device is reachable via SMS, data (mobile internet), or both, enabling better communication or service management decisions based on real-time device availability.`
         },
         useFor: {
             title: "What can it be used for?",
-            content: `The standardised Device Location Verification  API provides the option of verifying the geographical location of a  given SIM-based device and validating whether it is within a requested  geographical area without spoofing or GPS.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            content: `API consumer is able to verify whether a certain user device is reachable from the network via data- or sms-usage.`
         },
         useCases: {
             title: "Use cases",
             content: [
                 {
-                    title: "Security in location-dependent transactions",
-                    content:`This makes it possible to strengthen the security of a transaction, for example, when a customer makes a payment through a  POS terminal, or performs a transaction at an ATM, by validating that  the user's location is the same as that of the POS terminal or ATM. 
-                    In  this way, any location-dependent transactions can be verified to reduce  the risks related to account takeover and other types of identity fraud.
-                    \n The digitalisation of transactions  is increasing, however, every digital transaction takes place in a real  physical space. 
-                    The Device Location Verification API makes it possible  to connect the two worlds, verifying that a user's device is actually  located where the transaction is taking place.`,
-                    image: '#'
+                    title: "Emergency Services",
+                    content:`An emergency application queries the reachability status of a critical response team member. If the device is reachable via SMS, the system triggers an SMS alert, ensuring that the responder receives the message despite possible data connectivity issues.`,
+                    image: 'assets/images/device-rechability-status/emergency.jpg'
                 },
                 {
-                    title: "Fraud prevention in gaming, retail and distribution",
-                    content:`Often, gaming, retail or goods distribution companies make launches restricted to a specific region or country.  
-                    Fraud detection based on false locations or account spoofing allows  companies to maintain control of their services by validating where  their customers and fleets are located thanks to the integration of the Device Location Verification API.`,
-                    image: '#'
-                }]
+                    title: "Customer Support Platforms",
+                    content:`A customer support platform checks the reachability of customers through SMS before attempting to send a message or support ticket. If the device is reachable via SMS but not data, they ensure that only SMS-based communication is attempted.`,
+                    image: 'assets/images/device-rechability-status/support.svg'
+                },
+                {
+                    title: "IoT Devices",
+                    content:`A fleet management system queries the reachability status of IoT devices in vehicles. If a device is reachable via data, the system can proceed with real-time monitoring. If it’s reachable only via SMS, the system may reduce the frequency of data updates or switch to less data-intensive communication methods.`,
+                    image: 'assets/images/device-rechability-status/iot.svg'
+                }
+            ]
             },
         caseStudies: {
             title: "Case studies",
             content: [
-                {
-                    title: "Smarter banks",
-                    content: `Daycoval is one of the most recognised financial institutions in Brazil, with more than USD 13 billion in assets. 
-                    Thanks to Open Gateway, it has begun collaborating with Vivo, Telefonica's carrier in Brazil, to explore the benefits that telco APIs can have in bringing a better user experience to its digital services. 
-                    One of the  areas for improvement in the banking applications is the process of  signing up for a new product or opening a new account. 
-                    Thanks to the integration of Device Location Verification, Daycoval can ask Vivo to  verify the location of its users to automate steps when performing  different banking operations. 
-                    This allows for the development of new, smarter and more efficient fintech services, increasing customer satisfaction.`,
-                    image: "#"
-                },
-                {
-                    title: "Drone fleet control",
-                    content: `The delivery of parcels by drone requires reliable location control to ensure the location of the devices in real time with maximum security. 
-                    Ericsson and Vonage are teaming up to offer developers the ability to integrate Open Gateway solutions to enhance their users experience of Open Gateway applications. 
-                    By integrating the  Device Location Verification API, advanced network capabilities can be incorporated to quickly and easily verify a drone's position. 
-                    This makes it possible to develop new applications that provide maximum security  in controlling drone fleets.`,
-                    image: "#"
-                }]
+                // {
+                //     title: "Smarter banks",
+                //     content: `Daycoval is one of the most recognised financial institutions in Brazil, with more than USD 13 billion in assets. 
+                //     Thanks to Open Gateway, it has begun collaborating with Vivo, Telefonica's carrier in Brazil, to explore the benefits that telco APIs can have in bringing a better user experience to its digital services. 
+                //     One of the  areas for improvement in the banking applications is the process of  signing up for a new product or opening a new account. 
+                //     Thanks to the integration of Device Location Verification, Daycoval can ask Vivo to  verify the location of its users to automate steps when performing  different banking operations. 
+                //     This allows for the development of new, smarter and more efficient fintech services, increasing customer satisfaction.`,
+                //     image: "#"
+                // },
+                // {
+                //     title: "Drone fleet control",
+                //     content: `The delivery of parcels by drone requires reliable location control to ensure the location of the devices in real time with maximum security. 
+                //     Ericsson and Vonage are teaming up to offer developers the ability to integrate Open Gateway solutions to enhance their users experience of Open Gateway applications. 
+                //     By integrating the  Device Location Verification API, advanced network capabilities can be incorporated to quickly and easily verify a drone's position. 
+                //     This makes it possible to develop new applications that provide maximum security  in controlling drone fleets.`,
+                //     image: "#"
+                // }
+            ]
             },
     },
     documentation:{
         introduction: {
             title: 'Introduction',
-            content: `With this API, API consumers can retrieve the area where a certain user device is localized. The area provided in the response could be described:
-            by a circle determined by coordinates (latitude and longitude) and a radius.
-            by a simple polygon delimited by segments connecting consecutively  an array of coordinates (points). The last point connects to the first  point to delimit a closed shape bounded with straight sides.
-            The retrieved shape depends on the network conditions at the device's location and any of the supported shapes could be received.
-            The requester could optionally ask for a freshness of the localization information by providing a maxAge ("I want a location not older than 600 seconds").
-            The result accuracy depends on the network's ability and accuracy to locate the device.
-            Additionally to location information, the answer will also provide indication about the location time.
-            Location retrieval API could be useful in scenarios such as:
-            Fraud protection to ensure a given user is located in the region, country or location authorized for financial transactions
-            Verify the GPS coordinates reported by the app on a device to  ensure the GPS was not faked e.g. for content delivery with regional  restrictions
-            Contextual-based advertising, to trigger advertising after verifying the device is in the area of interest
-            Smart Mobility (Vehicle/bikes renting): obtain the location of a vehicle/bike to guarantee they are rented correctly
-            Note: Location is in most jurisdictions considered  to be sensitive data and thereby consent by device owner/user must be  verified before providing it to the developer.`
+            content: `The “Device Reachability Status” API allows API consumers to query the connectivity status of a device on a mobile network. The API reveals whether the device is reachable via SMS, data (mobile internet), or both, enabling better communication or service management decisions based on real-time device availability.`
         },
         term: {
             title: 'Relevant terms and definitions',
-            content: `Device: A device refers to any physical entity that can connect to a network and participate in network communication.
-            Area: It specifies the geographical surface where a device may be physically located.
-            Max Age: Maximum age of the location information which is accepted for the location retrieval (in seconds).
-            Absence of maxAge means that "any age" is acceptable for the client. In other words, this is like maxAge=infinite. The system will return lastLocationTime in the response. If the system is not able to provide location, an  error 404 with code LOCATION_RETRIEVAL.DEVICE_NOT_FOUND is sent back.
-            maxAge=0 means that a fresh calculation is requested by the client. If the system is not able to provide the fresh location, an error 422 with code LOCATION_RETRIEVAL.UNABLE_TO_FULFILL_MAX_AGE is  sent back.
-            Last Location Time : Last date and time when the device was localized.`
+            content: `- <b>Device:</b> A device refers to any physical entity that can connect to a network and participate in network communication.
+<br>
+At least one identifier for the device (user equipment) out of four options must be provided: IPv4 address, IPv6 address, Phone number, or Network Access Identifier assigned by the mobile network operator for the device. Where more than one device identifier is provided, only one identifier will be selected by the implementation and this choice indicated to the API consumer in the session creation response.
+<br>
+Note: Network Access Identifier is defined for future use and will not be supported with this version of the API.
+<br>
+- <b>Reachable:</b> Indicates, if the device is reachable from the network or not.
+<br>
+- <b>Connectivity:</b> Indicates the connectivity types (DATA, SMS or both) through which the device is reachable from the network.
+<br>
+- <b>LastStatusTime:</b> The time when the status was last confirmed to be correct. An older status is more likely to now be incorrect.`
         },
         functionality: {
             title: "API Functionality",
-            content: `The API exposes a single endpoint/operation:
-            /retrieve : Retrieve where the device is localized. The operation returns:
-            a localization defined either as a circle, with the center specified by the latitude and longitude, and a radius for answer accuracy, or as  polygon defined by the array of points delimiting its boundary.
-            a timestamp with the location information freshness.`
+            content: `The API exposes following capabilities:
+<br>
+<b>Device Reachability situation</b>
+<br>
+The endpoint POST /retrieve allows to get current connectivity status information synchronously.`
         },
         authorization: {
             title: "Authorization and authentication",
-            content: `The "Camara Security and Interoperability Profile" provides details  on how a client requests an access token. Please refer to Identify and  Consent Management  (https://github.com/camaraproject/IdentityAndConsentManagement/) for the released version of the Profile.
-            Which specific authorization flows are to be used will be determined  during onboarding process, happening between the API Client and the API  Provider, taking into account the declared purpose for accessing the  API, while also being subject to the prevailing legal framework dictated by local legislation.
-            It is important to remark that in cases where personal user data is  processed by the API, and users can exercise their rights through  mechanisms such as opt-in and/or opt-out, the use of 3-legged access  tokens becomes mandatory. This measure ensures that the API remains in  strict compliance with user privacy preferences and regulatory  obligations, upholding the principles of transparency and user-centric  data control.`
+            content: `The "Camara Security and Interoperability Profile" provides details of how an API consumer requests an access token. Please refer to Identity and Consent Management (https://github.com/camaraproject/IdentityAndConsentManagement/) for the released version of the profile.
+<br>
+The specific authorization flows to be used will be agreed upon during the onboarding process, happening between the API consumer and the API provider, taking into account the declared purpose for accessing the API, whilst also being subject to the prevailing legal framework dictated by local legislation.
+<br>
+In cases where personal data is processed by the API and users can exercise their rights through mechanisms such as opt-in and/or opt-out, the use of three-legged access tokens is mandatory. This ensures that the API remains in compliance with privacy regulations, upholding the principles of transparency and user-centric privacy-by-design.`
         },
         indentify: {
             title: "Identifying a device from the access token",
@@ -123,14 +120,14 @@ export const DEVICE_REACHABILITY_STATUS_API: Api={
         terms:{
             title: "Terms List",
             content:[
-                {
-                    title: "Term 1",
-                    content: `This is term 1.`
-                },
-                {
-                    title: "Term 2",
-                    content: `This is term 2.`
-                }
+                // {
+                //     title: "Term 1",
+                //     content: `This is term 1.`
+                // },
+                // {
+                //     title: "Term 2",
+                //     content: `This is term 2.`
+                // }
             ]
         },
         generalTerm:{

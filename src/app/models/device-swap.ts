@@ -11,108 +11,150 @@ export const DEVICE_SWAP: Api={
     learnMoreLink: '#',
     overview: {
         definition: {
-            title: "definition",
-            content: `The standardised Device Location Verification API provides the option of  verifying the geographical location of a given SIM-based device and  validating whether it’s within a requested geographical area without  spoofing or GPS theft.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            title: "Definition",
+            content: `The “Device Swap” API is designed to provide real-time insights into whether a SIM card associated with a user’s phone number has been transferred to a different physical device. This API enhances security, fraud detection, and regulatory compliance by offering clear and structured device swap event information.`
         },
         useFor: {
             title: "What can it be used for?",
-            content: `The standardised Device Location Verification  API provides the option of verifying the geographical location of a  given SIM-based device and validating whether it is within a requested  geographical area without spoofing or GPS.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            content: `A device swap check function that allows users to verify if a device swap has occurred within a given timeframe.<br>
+             A retrieve date function that returns the exact timestamp of the last device swap event.<br>
+             A subscription-based notification service to notify subscribers when a device swap event is detected.`
         },
         useCases: {
             title: "Use cases",
             content: [
                 {
-                    title: "Security in location-dependent transactions",
-                    content:`This makes it possible to strengthen the security of a transaction, for example, when a customer makes a payment through a  POS terminal, or performs a transaction at an ATM, by validating that  the user's location is the same as that of the POS terminal or ATM. 
-                    In  this way, any location-dependent transactions can be verified to reduce  the risks related to account takeover and other types of identity fraud.
-                    \n The digitalisation of transactions  is increasing, however, every digital transaction takes place in a real  physical space. 
-                    The Device Location Verification API makes it possible  to connect the two worlds, verifying that a user's device is actually  located where the transaction is taking place.`,
-                    image: '#'
+                    title: "Banks and financial",
+                    content:`Banks and financial services can detect device swaps to prevent unauthorized transactions, triggering additional authentication when necessary. Online services enhance identity protection by requiring re-authentication upon detecting a device change, ensuring only legitimate users access their accounts.`,
+                    image: 'assets/images/device-swap/bank.svg'
                 },
                 {
-                    title: "Fraud prevention in gaming, retail and distribution",
-                    content:`Often, gaming, retail or goods distribution companies make launches restricted to a specific region or country.  
-                    Fraud detection based on false locations or account spoofing allows  companies to maintain control of their services by validating where  their customers and fleets are located thanks to the integration of the Device Location Verification API.`,
-                    image: '#'
-                }]
+                    title: "Telecom providers and businesses",
+                    content:`Telecom providers and businesses leverage device swaps to offer targeted promotions, recommend accessories or upgraded service plans, and reinforce customer loyalty through reward programs for continued app usage.`,
+                    image: 'assets/images/device-swap/telecom.jpg'
+                },
+                {
+                    title: "Companies",
+                    content:`Companies managing corporate mobile plans monitor device usage to ensure employees are using company-provided lines on authorized devices, maintaining security and compliance.`,
+                    image: 'assets/images/device-swap/company.jpg'
+                },
+                {
+                    title: "Regulatory Compliance",
+                    content:`Ensuring compliance with regulations by tracking and verifying device swap events.`,
+                    image: 'assets/images/device-swap/compliance.png'
+                },
+                {
+                    title: "Subscription Services",
+                    content:`Offering continuous monitoring and notifications to businesses that require real-time updates on device swap events.`,
+                    image: 'assets/images/device-swap/subscription.svg'
+                }
+            ]
             },
         caseStudies: {
             title: "Case studies",
             content: [
-                {
-                    title: "Smarter banks",
-                    content: `Daycoval is one of the most recognised financial institutions in Brazil, with more than USD 13 billion in assets. 
-                    Thanks to Open Gateway, it has begun collaborating with Vivo, Telefonica's carrier in Brazil, to explore the benefits that telco APIs can have in bringing a better user experience to its digital services. 
-                    One of the  areas for improvement in the banking applications is the process of  signing up for a new product or opening a new account. 
-                    Thanks to the integration of Device Location Verification, Daycoval can ask Vivo to  verify the location of its users to automate steps when performing  different banking operations. 
-                    This allows for the development of new, smarter and more efficient fintech services, increasing customer satisfaction.`,
-                    image: "#"
-                },
-                {
-                    title: "Drone fleet control",
-                    content: `The delivery of parcels by drone requires reliable location control to ensure the location of the devices in real time with maximum security. 
-                    Ericsson and Vonage are teaming up to offer developers the ability to integrate Open Gateway solutions to enhance their users experience of Open Gateway applications. 
-                    By integrating the  Device Location Verification API, advanced network capabilities can be incorporated to quickly and easily verify a drone's position. 
-                    This makes it possible to develop new applications that provide maximum security  in controlling drone fleets.`,
-                    image: "#"
-                }]
+                // {
+                //     title: "Smarter banks",
+                //     content: `Daycoval is one of the most recognised financial institutions in Brazil, with more than USD 13 billion in assets. 
+                //     Thanks to Open Gateway, it has begun collaborating with Vivo, Telefonica's carrier in Brazil, to explore the benefits that telco APIs can have in bringing a better user experience to its digital services. 
+                //     One of the  areas for improvement in the banking applications is the process of  signing up for a new product or opening a new account. 
+                //     Thanks to the integration of Device Location Verification, Daycoval can ask Vivo to  verify the location of its users to automate steps when performing  different banking operations. 
+                //     This allows for the development of new, smarter and more efficient fintech services, increasing customer satisfaction.`,
+                //     image: "#"
+                // },
+                // {
+                //     title: "Drone fleet control",
+                //     content: `The delivery of parcels by drone requires reliable location control to ensure the location of the devices in real time with maximum security. 
+                //     Ericsson and Vonage are teaming up to offer developers the ability to integrate Open Gateway solutions to enhance their users experience of Open Gateway applications. 
+                //     By integrating the  Device Location Verification API, advanced network capabilities can be incorporated to quickly and easily verify a drone's position. 
+                //     This makes it possible to develop new applications that provide maximum security  in controlling drone fleets.`,
+                //     image: "#"
+                // }
+            ]
             },
     },
     documentation:{
         introduction: {
             title: 'Introduction',
-            content: `With this API, API consumers can retrieve the area where a certain user device is localized. The area provided in the response could be described:
-            by a circle determined by coordinates (latitude and longitude) and a radius.
-            by a simple polygon delimited by segments connecting consecutively  an array of coordinates (points). The last point connects to the first  point to delimit a closed shape bounded with straight sides.
-            The retrieved shape depends on the network conditions at the device's location and any of the supported shapes could be received.
-            The requester could optionally ask for a freshness of the localization information by providing a maxAge ("I want a location not older than 600 seconds").
-            The result accuracy depends on the network's ability and accuracy to locate the device.
-            Additionally to location information, the answer will also provide indication about the location time.
-            Location retrieval API could be useful in scenarios such as:
-            Fraud protection to ensure a given user is located in the region, country or location authorized for financial transactions
-            Verify the GPS coordinates reported by the app on a device to  ensure the GPS was not faked e.g. for content delivery with regional  restrictions
-            Contextual-based advertising, to trigger advertising after verifying the device is in the area of interest
-            Smart Mobility (Vehicle/bikes renting): obtain the location of a vehicle/bike to guarantee they are rented correctly
-            Note: Location is in most jurisdictions considered  to be sensitive data and thereby consent by device owner/user must be  verified before providing it to the developer.`
+            content: `The Device Swap API performs real-time checks on the last Device Swap event, providing real-time information about whether the SIM card associated with a user's phone number has been transferred to a different physical device.
+<br><br>
+Device Swap information can be invaluable for enhancing security, fraud detection, and ensuring compliance with regulatory requirements in various applications, apart from providing useful information of device upgrade trends in user segments.
+<br><br>
+This API is used by an application to get information about a mobile line's latest Device Swap date. It can be easily integrated and used through this secured API and allows API consumers to get this information in an easy and secured way. The API provides management of 2 endpoints answering 2 distinct questions:
+<br>
+When did the last Device Swap occur?<br>
+Has a Device Swap occurred during the last n hours?`
         },
         term: {
             title: 'Relevant terms and definitions',
-            content: `Device: A device refers to any physical entity that can connect to a network and participate in network communication.
-            Area: It specifies the geographical surface where a device may be physically located.
-            Max Age: Maximum age of the location information which is accepted for the location retrieval (in seconds).
-            Absence of maxAge means that "any age" is acceptable for the client. In other words, this is like maxAge=infinite. The system will return lastLocationTime in the response. If the system is not able to provide location, an  error 404 with code LOCATION_RETRIEVAL.DEVICE_NOT_FOUND is sent back.
-            maxAge=0 means that a fresh calculation is requested by the client. If the system is not able to provide the fresh location, an error 422 with code LOCATION_RETRIEVAL.UNABLE_TO_FULFILL_MAX_AGE is  sent back.
-            Last Location Time : Last date and time when the device was localized.`
+            content: `Device Swap: A Device Swap is a process in which the association between a user's mobile phone number (MSISDN) and a device (IMEI) is created for the first time or changes for any reasons.`
         },
         functionality: {
             title: "API Functionality",
-            content: `The API exposes a single endpoint/operation:
-            /retrieve : Retrieve where the device is localized. The operation returns:
-            a localization defined either as a circle, with the center specified by the latitude and longitude, and a radius for answer accuracy, or as  polygon defined by the array of points delimiting its boundary.
-            a timestamp with the location information freshness.`
+            content: `<p>
+  The Device Swap API provides a programmable interface for developers and other users (capabilities consumers) to request the last date of a device swap performed on the mobile line, or to check whether a device swap has been performed during a past period.
+</p>
+
+<p><strong>The API provides 2 operations:</strong></p>
+
+<ul>
+  <li>
+    <strong>POST retrieve-date:</strong> Provides the timestamp of the latest device swap, if any, for a given phone number.
+    <ul>
+      <li>
+        If no swap has been performed and the network operator supports unlimited DeviceSwap monitoring timeframe, the API will return the first phone number usage in a device (the timestamp of the first time that the phone number was connected to the network; that is, the first time that the SIM is installed in a device).
+      </li>
+      <li>
+        If the latest device swap date (or the first phone number usage, if no device swap) cannot be communicated due to local regulations (or Network Operator internal privacy policies) preventing the safekeeping of the information for longer than the stated period, a <code>null</code> value will be returned.
+      </li>
+      <li>
+        Optionally, a <code>monitoredPeriod</code> may be provided to indicate the monitored time frame (in days) supported by the Network Operator. In this case, the response must be treated as “there were no device swap events during <code>monitoredPeriod</code>”. Although the parameter is optional, it is recommended to support it in DeviceSwap implementations.
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>POST check:</strong> Checks if a device swap has been performed during a past period (defined in the request with the <code>maxAge</code> attribute) for a given phone number.  
+    The API will return a boolean response (true/false), indicating whether the device has been swapped during the specified period.
+    <br><br>
+    If the phone number has never been installed in a device, or no data is available in the operator’s records (e.g. database error), the API will return a <strong>422 error</strong>.
+  </li>
+</ul>`
         },
         authorization: {
             title: "Authorization and authentication",
-            content: `The "Camara Security and Interoperability Profile" provides details  on how a client requests an access token. Please refer to Identify and  Consent Management  (https://github.com/camaraproject/IdentityAndConsentManagement/) for the released version of the Profile.
-            Which specific authorization flows are to be used will be determined  during onboarding process, happening between the API Client and the API  Provider, taking into account the declared purpose for accessing the  API, while also being subject to the prevailing legal framework dictated by local legislation.
-            It is important to remark that in cases where personal user data is  processed by the API, and users can exercise their rights through  mechanisms such as opt-in and/or opt-out, the use of 3-legged access  tokens becomes mandatory. This measure ensures that the API remains in  strict compliance with user privacy preferences and regulatory  obligations, upholding the principles of transparency and user-centric  data control.`
+            content: `The "Camara Security and Interoperability Profile" provides details of how an API consumer requests an access token. Please refer to Identity and Consent Management (https://github.com/camaraproject/IdentityAndConsentManagement/) for the released version of the profile.
+<br><br>
+The specific authorization flows to be used will be agreed upon during the onboarding process, happening between the API consumer and the API provider, taking into account the declared purpose for accessing the API, whilst also being subject to the prevailing legal framework dictated by local legislation.
+<br><br>
+In cases where personal data is processed by the API and users can exercise their rights through mechanisms such as opt-in and/or opt-out, the use of three-legged access tokens is mandatory. This ensures that the API remains in compliance with privacy regulations, upholding the principles of transparency and user-centric privacy-by-design.`
         },
         indentify: {
             title: "Identifying a device from the access token",
-            content: `This specification defines the device object field as  optional in API requests, specifically in cases where the API is  accessed using a 3-legged access token, and the device can be uniquely  identified by the token. This approach simplifies API usage for API  consumers by relying on the device information associated with the  access token used to invoke the API.
-            Handling of device information:
-            Optional device object for 3-legged tokens:
-            When using a 3-legged access token, the device associated with the  access token must be considered as the device for the API request. This  means that the device object is not required in the request, and if  included it must identify the same device, therefore it is recommended NOT to include it in these scenarios to simplify the API usage and avoid additional validations.
-            Validation mechanism:
-            The server will extract the device identification from the access token, if available.
-            If the API request additionally includes a device  object when using a 3-legged access token, the API will validate that  the device identifier provided matches the one associated with the  access token.
-            If there is a mismatch, the API will respond with a 403 -  INVALID_TOKEN_CONTEXT error, indicating that the device information in  the request does not match the token.
-            Error handling for unidentifiable devices:
-            If the device object is not included in the request and the device information cannot be derived from the 3-legged access  token, the server will return a 422 UNIDENTIFIABLE_DEVICE error.
-            Restrictions for tokens without an associated authenticated identifier:
-            For scenarios which do not have a single device identifier  associated to the token during the authentication flow, e.g. 2-legged  access tokens, the device object MUST be provided in the  API request. This ensures that the device identification is explicit and valid for each API call made with these tokens.`
+            content: `<p>
+  This API requires the API consumer to identify a phone number as the subject of the API.
+  There are 2 ways to retrieve it depending on the authorization flow used:
+</p>
+
+<ul>
+  <li>
+    When the API is invoked using a two-legged access token, the phone number will be
+    identified from the optional <code>phoneNumber</code> identifier, which therefore MUST
+    be provided.
+  </li>
+
+  <li>
+    When a three-legged access token is used however, this optional
+    <code>phoneNumber</code> identifier MUST NOT be provided, as the phone number will be
+    uniquely identified from the access token.
+  </li>
+</ul>
+
+<p>
+  This approach simplifies API usage for API consumers using a three-legged access token
+  to invoke the API by relying on the information that is associated with the access token
+  and was identified during the authentication process.
+</p>`
         },
         sandboxSwagger: "#"
     },
@@ -123,14 +165,14 @@ export const DEVICE_SWAP: Api={
         terms:{
             title: "Terms List",
             content:[
-                {
-                    title: "Term 1",
-                    content: `This is term 1.`
-                },
-                {
-                    title: "Term 2",
-                    content: `This is term 2.`
-                }
+                // {
+                //     title: "Term 1",
+                //     content: `This is term 1.`
+                // },
+                // {
+                //     title: "Term 2",
+                //     content: `This is term 2.`
+                // }
             ]
         },
         generalTerm:{

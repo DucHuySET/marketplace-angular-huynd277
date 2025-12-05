@@ -11,108 +11,89 @@ export const NUMBER_VERIFICATION_API: Api={
     learnMoreLink: '#',
     overview: {
         definition: {
-            title: "definition",
-            content: `The standardised Device Location Verification API provides the option of  verifying the geographical location of a given SIM-based device and  validating whether it’s within a requested geographical area without  spoofing or GPS theft.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            title: "Definition",
+            content: `The “Number Verification” API is a service that enables businesses to seamlessly confirm the ownership of a mobile phone number and retrieve the number directly from the user’s device.`
         },
         useFor: {
             title: "What can it be used for?",
-            content: `The standardised Device Location Verification  API provides the option of verifying the geographical location of a  given SIM-based device and validating whether it is within a requested  geographical area without spoofing or GPS.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            content: `This API ensures that the phone number provided or obtained matches the one associated with the user’s device, enabling secure and reliable authentication. This API eliminates the need for manual inputs, such as SMS codes, simplifying processes like account creation, login, or transaction validation. It offers a practical solution for industries requiring accurate phone number verification and retrieval, enhancing both user experience, fraud prevention and operational efficiency.`
         },
         useCases: {
             title: "Use cases",
             content: [
                 {
-                    title: "Security in location-dependent transactions",
-                    content:`This makes it possible to strengthen the security of a transaction, for example, when a customer makes a payment through a  POS terminal, or performs a transaction at an ATM, by validating that  the user's location is the same as that of the POS terminal or ATM. 
-                    In  this way, any location-dependent transactions can be verified to reduce  the risks related to account takeover and other types of identity fraud.
-                    \n The digitalisation of transactions  is increasing, however, every digital transaction takes place in a real  physical space. 
-                    The Device Location Verification API makes it possible  to connect the two worlds, verifying that a user's device is actually  located where the transaction is taking place.`,
-                    image: '#'
+                    title: "App onboarding (banking app, social media, ride share, mobile wallet, …)",
+                    content:`One Time Password SMS is widely used to prove that the user is in possession of the mobile device associated with the mobile number used for registration. However it adds friction to the user journey. The application can instead request a seamless authentication of the mobile device via the Number Verification API.`,
+                    image: 'assets/images/number-verification/app_onboarding.png'
                 },
                 {
-                    title: "Fraud prevention in gaming, retail and distribution",
-                    content:`Often, gaming, retail or goods distribution companies make launches restricted to a specific region or country.  
-                    Fraud detection based on false locations or account spoofing allows  companies to maintain control of their services by validating where  their customers and fleets are located thanks to the integration of the Device Location Verification API.`,
-                    image: '#'
-                }]
-            },
-        caseStudies: {
-            title: "Case studies",
-            content: [
-                {
-                    title: "Smarter banks",
-                    content: `Daycoval is one of the most recognised financial institutions in Brazil, with more than USD 13 billion in assets. 
-                    Thanks to Open Gateway, it has begun collaborating with Vivo, Telefonica's carrier in Brazil, to explore the benefits that telco APIs can have in bringing a better user experience to its digital services. 
-                    One of the  areas for improvement in the banking applications is the process of  signing up for a new product or opening a new account. 
-                    Thanks to the integration of Device Location Verification, Daycoval can ask Vivo to  verify the location of its users to automate steps when performing  different banking operations. 
-                    This allows for the development of new, smarter and more efficient fintech services, increasing customer satisfaction.`,
-                    image: "#"
+                    title: "App login",
+                    content:`In place of username/password, the application can request seamless authentication of the mobile device.`,
+                    image: 'assets/images/number-verification/app_login.png'
                 },
                 {
-                    title: "Drone fleet control",
-                    content: `The delivery of parcels by drone requires reliable location control to ensure the location of the devices in real time with maximum security. 
-                    Ericsson and Vonage are teaming up to offer developers the ability to integrate Open Gateway solutions to enhance their users experience of Open Gateway applications. 
-                    By integrating the  Device Location Verification API, advanced network capabilities can be incorporated to quickly and easily verify a drone's position. 
-                    This makes it possible to develop new applications that provide maximum security  in controlling drone fleets.`,
-                    image: "#"
-                }]
+                    title: "Application password reset",
+                    content:`The user journey often relies on One Time Password SMS. As in the app onboarding use case, the application can instead request a seamless authentication of the mobile device via the Number Verification API.`,
+                    image: 'assets/images/number-verification/reset_pass.png'
+                }
+            ]
             },
+        // caseStudies: {
+        //     title: "Case studies",
+        //     content: [
+        //         {
+        //             title: "Second-hand fashion with the latest in security",
+        //             content: `Vinted is a second-hand fashion e-commerce that allows its users to sell, buy and exchange items that they no longer use in order to give them a second life. Online sales of these products are growing exponentially thanks to the comfort and flexibility offered to users. However, companies are becoming exposed to new risks, including digital fraud and loss of user trust. With the integration of the Number Verification API, Vinted can add an additional layer of security to its registration processes to reduce the risks to its customers. This tool also simplifies the identification process, making the consumer experience more convenient and straightforward.`,
+        //             image: "#"
+        //         },
+        //         {
+        //             title: "Drone fleet control",
+        //             content: `The delivery of parcels by drone requires reliable location control to ensure the location of the devices in real time with maximum security. 
+        //             Ericsson and Vonage are teaming up to offer developers the ability to integrate Open Gateway solutions to enhance their users experience of Open Gateway applications. 
+        //             By integrating the  Device Location Verification API, advanced network capabilities can be incorporated to quickly and easily verify a drone's position. 
+        //             This makes it possible to develop new applications that provide maximum security  in controlling drone fleets.`,
+        //             image: "#"
+        //         }]
+        //     },
     },
     documentation:{
         introduction: {
             title: 'Introduction',
-            content: `With this API, API consumers can retrieve the area where a certain user device is localized. The area provided in the response could be described:
-            by a circle determined by coordinates (latitude and longitude) and a radius.
-            by a simple polygon delimited by segments connecting consecutively  an array of coordinates (points). The last point connects to the first  point to delimit a closed shape bounded with straight sides.
-            The retrieved shape depends on the network conditions at the device's location and any of the supported shapes could be received.
-            The requester could optionally ask for a freshness of the localization information by providing a maxAge ("I want a location not older than 600 seconds").
-            The result accuracy depends on the network's ability and accuracy to locate the device.
-            Additionally to location information, the answer will also provide indication about the location time.
-            Location retrieval API could be useful in scenarios such as:
-            Fraud protection to ensure a given user is located in the region, country or location authorized for financial transactions
-            Verify the GPS coordinates reported by the app on a device to  ensure the GPS was not faked e.g. for content delivery with regional  restrictions
-            Contextual-based advertising, to trigger advertising after verifying the device is in the area of interest
-            Smart Mobility (Vehicle/bikes renting): obtain the location of a vehicle/bike to guarantee they are rented correctly
-            Note: Location is in most jurisdictions considered  to be sensitive data and thereby consent by device owner/user must be  verified before providing it to the developer.`
+            content: `The Number Verification API is used by the API consumer to perform real-time checks to verify the phone number of a mobile device being used to access the application. This check can be done either by the API provider, returning "true" or "false", or by the application, by matching the phone number returned by the API Provider with the phone number of the device that is being used.<br>
+            <br>
+            It uses silent authentication (Network-based authentication or SIM-Based authentication) to verify possession of a phone number in the background without requiring user interaction. There are neither one-time passwords (OTP) received by SMS nor authenticator app downloads, so it is much simpler. It can be used at sign up, login, or transaction time to validate that a user's SIM is not spoofed or cloned.`
         },
         term: {
             title: 'Relevant terms and definitions',
-            content: `Device: A device refers to any physical entity that can connect to a network and participate in network communication.
-            Area: It specifies the geographical surface where a device may be physically located.
-            Max Age: Maximum age of the location information which is accepted for the location retrieval (in seconds).
-            Absence of maxAge means that "any age" is acceptable for the client. In other words, this is like maxAge=infinite. The system will return lastLocationTime in the response. If the system is not able to provide location, an  error 404 with code LOCATION_RETRIEVAL.DEVICE_NOT_FOUND is sent back.
-            maxAge=0 means that a fresh calculation is requested by the client. If the system is not able to provide the fresh location, an error 422 with code LOCATION_RETRIEVAL.UNABLE_TO_FULFILL_MAX_AGE is  sent back.
-            Last Location Time : Last date and time when the device was localized.`
+            content: `- Network-Based Authentication: Authentication mechanism based on the identification of the mobile phone. A network operator knows to which subscriber a connected mobile phone belongs and what its associated phone number is.<br>
+            - SIM-Based Authentication: Authentication mechanism based on the identification of the subscriber's SIM installed in the user's device. This mechanism relies on temporary tokens provided by the operator, as defined by GSMA TS.43 and GSMA ASAC.`
         },
         functionality: {
             title: "API Functionality",
-            content: `The API exposes a single endpoint/operation:
-            /retrieve : Retrieve where the device is localized. The operation returns:
-            a localization defined either as a circle, with the center specified by the latitude and longitude, and a radius for answer accuracy, or as  polygon defined by the array of points delimiting its boundary.
-            a timestamp with the location information freshness.`
+            content: `This API enables an API Consumer to verify or retrieve the phone number of the mobile device being used to access their service.`
         },
         authorization: {
             title: "Authorization and authentication",
-            content: `The "Camara Security and Interoperability Profile" provides details  on how a client requests an access token. Please refer to Identify and  Consent Management  (https://github.com/camaraproject/IdentityAndConsentManagement/) for the released version of the Profile.
-            Which specific authorization flows are to be used will be determined  during onboarding process, happening between the API Client and the API  Provider, taking into account the declared purpose for accessing the  API, while also being subject to the prevailing legal framework dictated by local legislation.
-            It is important to remark that in cases where personal user data is  processed by the API, and users can exercise their rights through  mechanisms such as opt-in and/or opt-out, the use of 3-legged access  tokens becomes mandatory. This measure ensures that the API remains in  strict compliance with user privacy preferences and regulatory  obligations, upholding the principles of transparency and user-centric  data control.`
+            content: `<b>Authentication Request with a temporary token</b> <br>
+            If the API Consumer has a TS.43 temporary token created on the mobile device then this API works over all connections e.g. WiFi taking advantage of the SIM-Based authentication. The API Consumer sends the temporary token to their backend which sends a CIBA Authentication Request, as described in the current release CAMARA APIs Access and User Consent Management, with a parameter "login_hint=operatortoken:". How the API Consumers get a TS.43 temporary token and how this token is sent to their backend, is out-of-scope of the API definition.<br>
+            <br>
+            <b>Authentication Request without a temporary token</b><br>
+            If the API Consumer does not have a TS.43 temporary token then the API Consumer must use OpenId Connect Authorization Code Flow as described in the current release of CAMARA APIs Access and User Consent Management. For this method of authentication to work, the device must be connected to the mobile network.`
         },
         indentify: {
             title: "Identifying a device from the access token",
             content: `This specification defines the device object field as  optional in API requests, specifically in cases where the API is  accessed using a 3-legged access token, and the device can be uniquely  identified by the token. This approach simplifies API usage for API  consumers by relying on the device information associated with the  access token used to invoke the API.
-            Handling of device information:
-            Optional device object for 3-legged tokens:
-            When using a 3-legged access token, the device associated with the  access token must be considered as the device for the API request. This  means that the device object is not required in the request, and if  included it must identify the same device, therefore it is recommended NOT to include it in these scenarios to simplify the API usage and avoid additional validations.
-            Validation mechanism:
-            The server will extract the device identification from the access token, if available.
-            If the API request additionally includes a device  object when using a 3-legged access token, the API will validate that  the device identifier provided matches the one associated with the  access token.
-            If there is a mismatch, the API will respond with a 403 -  INVALID_TOKEN_CONTEXT error, indicating that the device information in  the request does not match the token.
-            Error handling for unidentifiable devices:
-            If the device object is not included in the request and the device information cannot be derived from the 3-legged access  token, the server will return a 422 UNIDENTIFIABLE_DEVICE error.
-            Restrictions for tokens without an associated authenticated identifier:
-            For scenarios which do not have a single device identifier  associated to the token during the authentication flow, e.g. 2-legged  access tokens, the device object MUST be provided in the  API request. This ensures that the device identification is explicit and valid for each API call made with these tokens.`
+            Handling of device information:<br>
+            - Optional device object for 3-legged tokens:<br>
+                + When using a 3-legged access token, the device associated with the  access token must be considered as the device for the API request. This  means that the device object is not required in the request, and if  included it must identify the same device, therefore it is recommended NOT to include it in these scenarios to simplify the API usage and avoid additional validations.
+            Validation mechanism:<br>
+                    * The server will extract the device identification from the access token, if available.<br>
+                    * If the API request additionally includes a device  object when using a 3-legged access token, the API will validate that  the device identifier provided matches the one associated with the  access token.<br>
+                    * If there is a mismatch, the API will respond with a 403 -  INVALID_TOKEN_CONTEXT error, indicating that the device information in  the request does not match the token.<br>
+                + Error handling for unidentifiable devices:<br>
+                    * If the device object is not included in the request and the device information cannot be derived from the 3-legged access  token, the server will return a 422 UNIDENTIFIABLE_DEVICE error.<br>
+            - Restrictions for tokens without an associated authenticated identifier:<br>
+                For scenarios which do not have a single device identifier  associated to the token during the authentication flow, e.g. 2-legged  access tokens, the device object MUST be provided in the  API request. This ensures that the device identification is explicit and valid for each API call made with these tokens.`
         },
         sandboxSwagger: "#"
     },
@@ -123,14 +104,14 @@ export const NUMBER_VERIFICATION_API: Api={
         terms:{
             title: "Terms List",
             content:[
-                {
-                    title: "Term 1",
-                    content: `This is term 1.`
-                },
-                {
-                    title: "Term 2",
-                    content: `This is term 2.`
-                }
+                // {
+                //     title: "Term 1",
+                //     content: `This is term 1.`
+                // },
+                // {
+                //     title: "Term 2",
+                //     content: `This is term 2.`
+                // }
             ]
         },
         generalTerm:{
