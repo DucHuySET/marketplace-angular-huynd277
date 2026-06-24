@@ -1,8 +1,8 @@
 version: "3"
 services:
   angular-app:
-    image: landing-portal-demo-support:25.12.5.4
-    container_name: landing-portal-local
+    image: landing-portal-prod:26.05.10.1
+    container_name: landing-portal-prod
     # build: .
     ports:
       - "8070:8070"

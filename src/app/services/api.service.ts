@@ -8,7 +8,8 @@ import * as ApiModels from '../models';
 export class ApiService {
   private apis = [
     ApiModels.NUMBER_VERIFICATION_API,
-    ApiModels.DEVICE_LOCATION_API,
+    ApiModels.DEVICE_LOCATION_RETRIEVAL_API,
+    ApiModels.DEVICE_LOCATION_VERIFICATION_API,
     ApiModels.QUALITY_ON_DEMAND_API,
     ApiModels.DEVICE_REACHABILITY_STATUS_API,
     ApiModels.DEVICE_SWAP,
@@ -36,7 +37,7 @@ export class ApiService {
   }
 
   getFeaturedApis(): Api[] {
-    return this.apis.slice(0, 5);
+    return this.apis.slice(0, 6);
   }
 
   getApiById(id: string): Api | undefined {

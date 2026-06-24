@@ -1,41 +1,47 @@
 import {Api} from './api.model'
 
-export const DEVICE_LOCATION_API: Api={
-    id: "device-location",
-    name: "Device Location",
+export const DEVICE_LOCATION_RETRIEVAL_API: Api={
+    id: "device-location-retrieval",
+    name: "Device Location Retrieval",
     status: "Ready",
-    description: "Prevent fraud with real-time location verification",
+    description: "Provides the location of a mobile line as detected by the MNO",
     icon: "assets/images/icon/api/device-location.png",
-    version: "v0.3.0",
+    version: "v0.5.0",
     tryItFreeLink: '#',
     learnMoreLink: '#',
     overview: {
         definition: {
             title: "Definition",
-            content: `The standardised Device Location Verification API provides the option of verifying the geographical location of a given SIM-based device and validating whether it’s within a requested geographical area without  spoofing or GPS theft.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            content: `The CAMARA Device Location Retrieval API enables API consumers to retrieve the geographical area where a mobile device is located, based on information detected by the mobile network operator.
+      
+The location may be returned as a circle, defined by latitude, longitude and radius, or as a polygon made of multiple coordinates. The returned shape and accuracy depend on network conditions and the mobile network's capability to locate the device.
+
+This API helps applications obtain trusted network-based location information, including the time when the device was last localized.`
         },
         useFor: {
             title: "What can it be used for?",
-            content: `The standardised Device Location Verification  API provides the option of verifying the geographical location of a  given SIM-based device and validating whether it is within a requested  geographical area without spoofing or GPS.
-            \n This solution validates the location of a device to enable services or allow transactions by verifying the location.`
+            content: `The Device Location Retrieval API can be used to obtain the approximate location area of a SIM-based mobile device using mobile network information.
+
+It is useful for services that need network-verified location context, such as fraud prevention, regional content access, contextual services, smart mobility, fleet operations, and location-aware customer experiences.
+
+Because location data is sensitive personal information in many jurisdictions, user consent and applicable privacy requirements must be handled before location information is provided.`
         },
         useCases: {
             title: "Use cases",
             content: [
                 {
-                    title: "Security in location-dependent transactions",
-                    content:`This makes it possible to strengthen the security of a transaction, for example, when a customer makes a payment through a  POS terminal, or performs a transaction at an ATM, by validating that  the user's location is the same as that of the POS terminal or ATM. 
-                    In  this way, any location-dependent transactions can be verified to reduce  the risks related to account takeover and other types of identity fraud.
-                    \n The digitalisation of transactions  is increasing, however, every digital transaction takes place in a real  physical space. 
-                    The Device Location Verification API makes it possible  to connect the two worlds, verifying that a user's device is actually  located where the transaction is taking place.`,
-                    image: 'assets/images/device-location/usecase1.jpg'
+                    title: "Fraud protection for digital transactions",
+                    content:`Financial services can use network-based location retrieval to help determine whether a user device is located in an expected region, country or service area during a transaction.
+
+                            This can support fraud detection by comparing the device's network-provided location with transaction context, login region, merchant location or risk rules. It helps reduce risks related to account takeover, suspicious access and unauthorized transactions.`,
+                    image: 'assets/images/device-location-retrieval/usecase1.jpg'
                 },
                 {
-                    title: "Fraud prevention in gaming, retail and distribution",
-                    content:`Often, gaming, retail or goods distribution companies make launches restricted to a specific region or country.  
-                    Fraud detection based on false locations or account spoofing allows  companies to maintain control of their services by validating where  their customers and fleets are located thanks to the integration of the Device Location Verification API.`,
-                    image: 'assets/images/device-location/usecase2.jpg'
+                    title: "Regional access and content protection",
+                    content:`Digital services can use Device Location Retrieval to support regional access control and content delivery rules.
+
+For example, an application may compare GPS coordinates reported by the device with location information retrieved from the mobile network. This helps detect potentially spoofed GPS data and supports services with country, region or licensing restrictions.`,
+                    image: 'assets/images/device-location-retrieval/usecase2.jpg'
                 }]
             },
         // caseStudies: {
@@ -64,31 +70,38 @@ export const DEVICE_LOCATION_API: Api={
         introduction: {
             title: 'Introduction',
             content: `With this API, API consumers can retrieve the area where a certain user device is localized. The area provided in the response could be described:
-            by a circle determined by coordinates (latitude and longitude) and a radius.
-            by a simple polygon delimited by segments connecting consecutively  an array of coordinates (points). The last point connects to the first  point to delimit a closed shape bounded with straight sides.
-            The retrieved shape depends on the network conditions at the device's location and any of the supported shapes could be received.
-            The requester could optionally ask for a freshness of the localization information by providing a maxAge ("I want a location not older than 600 seconds").
-            The result accuracy depends on the network's ability and accuracy to locate the device.
-            Additionally to location information, the answer will also provide indication about the location time.
-            Location retrieval API could be useful in scenarios such as:
-            Fraud protection to ensure a given user is located in the region, country or location authorized for financial transactions
-            Verify the GPS coordinates reported by the app on a device to  ensure the GPS was not faked e.g. for content delivery with regional  restrictions
-            Contextual-based advertising, to trigger advertising after verifying the device is in the area of interest
-            Smart Mobility (Vehicle/bikes renting): obtain the location of a vehicle/bike to guarantee they are rented correctly
-            Note: Location is in most jurisdictions considered  to be sensitive data and thereby consent by device owner/user must be  verified before providing it to the developer.`
+      
+- by a circle determined by coordinates, latitude and longitude, and a radius.
+- by a simple polygon delimited by segments connecting consecutive coordinates. The last point connects to the first point to create a closed shape.
+
+The retrieved shape depends on the network conditions at the device's location and the supported shapes available from the network.
+
+The requester can optionally ask for a freshness requirement by providing maxAge, for example: "I want a location not older than 600 seconds".
+
+The result accuracy depends on the network's ability and accuracy to locate the device. In addition to the location information, the response also provides an indication of the location time.
+
+Location Retrieval can be useful for fraud protection, GPS spoofing detection, regional content control, contextual advertising, smart mobility and fleet-related scenarios.
+
+Note: Location is considered sensitive data in many jurisdictions. Consent by the device owner or user must be verified before providing this information to the developer.`
         },
         term: {
             title: 'Relevant terms and definitions',
-            content: `Device: A device refers to any physical entity that can connect to a network and participate in network communication.
-            Area: It specifies the geographical surface where a device may be physically located.
-            Max Age: Maximum age of the location information which is accepted for the location retrieval (in seconds).
-            Absence of maxAge means that "any age" is acceptable for the client. In other words, this is like maxAge=infinite. The system will return lastLocationTime in the response. If the system is not able to provide location, an  error 404 with code LOCATION_RETRIEVAL.DEVICE_NOT_FOUND is sent back.
-            maxAge=0 means that a fresh calculation is requested by the client. If the system is not able to provide the fresh location, an error 422 with code LOCATION_RETRIEVAL.UNABLE_TO_FULFILL_MAX_AGE is  sent back.
-            Last Location Time : Last date and time when the device was localized.`
+            content: `Device: A physical entity that can connect to a network and participate in network communication.
+<br>
+Area: The geographical surface where a device may be physically located.
+<br>
+Max Age: The maximum age, in seconds, of the location information accepted for location retrieval.
+<br>
+Absence of maxAge means that any age is acceptable for the client. In this case, the system returns lastLocationTime in the response.
+<br>
+maxAge=0 means that a fresh location calculation is requested by the client.
+<br>
+Last Location Time: The last date and time when the device was localized.`
         },
         functionality: {
             title: "API Functionality",
             content: `The API exposes a single endpoint/operation:
+            <br>
             /retrieve : Retrieve where the device is localized. The operation returns:
             a localization defined either as a circle, with the center specified by the latitude and longitude, and a radius for answer accuracy, or as  polygon defined by the array of points delimiting its boundary.
             a timestamp with the location information freshness.`
@@ -114,7 +127,7 @@ export const DEVICE_LOCATION_API: Api={
             Restrictions for tokens without an associated authenticated identifier:
             For scenarios which do not have a single device identifier  associated to the token during the authentication flow, e.g. 2-legged  access tokens, the device object MUST be provided in the  API request. This ensures that the device identification is explicit and valid for each API call made with these tokens.`
         },
-        sandboxSwagger: "/assets/images/device-location/openapi.json"
+        sandboxSwagger: "/assets/images/device-location-retrieval/openapi.json"
     },
     sandbox:{
         sandboxUrl:"#"

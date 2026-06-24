@@ -1,4 +1,5 @@
-export { DEVICE_LOCATION_API } from './device-location-api';
+export { DEVICE_LOCATION_RETRIEVAL_API } from './device-location-retrieval-api';
+export { DEVICE_LOCATION_VERIFICATION_API } from './device-location-verification-api';
 export { DEVICE_REACHABILITY_STATUS_API } from './device-reachability-status-api';
 export { NUMBER_VERIFICATION_API } from './number-verification-api';
 export { QUALITY_ON_DEMAND_API } from './quality-on-demand-api';
@@ -18,7 +19,8 @@ export {SUBSCRIPTION_STATUS} from './subscription-status';
 export {DEDICATED_NETWORKS} from './dedicated-networks';
 
 export const API_LIST = {
-    DEVICE_LOCATION: '/api/device-location',
+    DEVICE_LOCATION_RETRIEVAL: '/api/device-location-retrieval',
+    DEVICE_LOCATION_VERIFICATION: '/api/device-location-verification',
     QUALITY_ON_DEMAND: '/api/quality-on-demand',
     DEVICE_REACHABILITY: '/api/device-reachability',
     NUMBER_VERIFICATION: '/api/number-verification',
